@@ -13,8 +13,8 @@ $filter = isset($_GET['filter']) ? $_GET['filter'] : 'all';
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 $logged_in = isset($_SESSION['user_id']);
 
-// Require login for "My Posts" filter
-if ($filter === 'my' && !$logged_in) {
+// Require login for viewing posts page
+if (!$logged_in) {
     header("Location: ../auth/login.php");
     exit();
 }

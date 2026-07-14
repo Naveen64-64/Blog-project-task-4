@@ -39,23 +39,25 @@ if (!isset($path_prefix)) {
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-                <!-- Global Navbar Search Form -->
-                <form class="d-flex ms-lg-4 my-3 my-lg-0 w-100 w-lg-auto" action="<?php echo $path_prefix; ?>posts/viewposts.php" method="get" style="max-width: 320px;">
-                    <div class="input-group input-group-sm rounded-pill overflow-hidden border border-light-subtle shadow-sm w-100">
-                        <span class="input-group-text bg-white border-0 ps-3 pe-1">
-                            <i class="fa-solid fa-magnifying-glass text-muted" style="font-size: 0.85rem;"></i>
-                        </span>
-                        <input 
-                            class="form-control border-0 py-2 ps-1 shadow-none" 
-                            type="search" 
-                            name="search" 
-                            placeholder="Search articles..." 
-                            aria-label="Search" 
-                            value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>"
-                            style="font-size: 0.85rem;"
-                        >
-                    </div>
-                </form>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <!-- Global Navbar Search Form -->
+                    <form class="d-flex ms-lg-4 my-3 my-lg-0 w-100 w-lg-auto" action="<?php echo $path_prefix; ?>posts/viewposts.php" method="get" style="max-width: 320px;">
+                        <div class="input-group input-group-sm rounded-pill overflow-hidden border border-light-subtle shadow-sm w-100">
+                            <span class="input-group-text bg-white border-0 ps-3 pe-1">
+                                <i class="fa-solid fa-magnifying-glass text-muted" style="font-size: 0.85rem;"></i>
+                            </span>
+                            <input 
+                                class="form-control border-0 py-2 ps-1 shadow-none" 
+                                type="search" 
+                                name="search" 
+                                placeholder="Search articles..." 
+                                aria-label="Search" 
+                                value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>"
+                                style="font-size: 0.85rem;"
+                            >
+                        </div>
+                    </form>
+                <?php endif; ?>
 
                 <ul class="navbar-nav ms-auto align-items-center gap-2 mt-3 mt-lg-0">
                     <li class="nav-item w-100 text-center text-lg-start">
